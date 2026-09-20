@@ -111,7 +111,7 @@ footer{padding:50px 20px 70px;text-align:center;color:#8b7969;font-size:10px;let
 <div class="music" id="musicBox">
   <button id="musicBtn" onclick="toggleMusic()" aria-label="Musiqani yoqish yoki o‘chirish">♫</button>
   <span id="musicText">Musiqa</span>
-  <audio id="music" loop preload="auto">
+  <audio id="music" loop preload="auto" autoplay playsinline>
     <source src="./Christina Perri - A Thousand Years (PianoCello Cover).mp3" type="audio/mpeg">
   </audio>
 </div>
@@ -183,10 +183,27 @@ footer{padding:50px 20px 70px;text-align:center;color:#8b7969;font-size:10px;let
 </main>
 
 <script>
+function playMusic(){
+  const music=document.getElementById('music');
+  const musicBtn=document.getElementById('musicBtn');
+  const musicText=document.getElementById('musicText');
+
+  if (!music) return;
+
+  music.play().then(()=>{
+    musicBtn.textContent='❚❚';
+    musicText.textContent='Ijro etilmoqda';
+  }).catch(()=>{
+    musicBtn.textContent='♫';
+    musicText.textContent='Musiqa';
+  });
+}
+
 function openInvite(){
   document.getElementById('cover').classList.add('hide');
   document.body.classList.add('show');
   window.scrollTo(0,0);
+  playMusic();
 }
 const target = new Date('2026-10-08T16:00:00+05:00').getTime();
 function tick(){
@@ -215,13 +232,20 @@ document.querySelectorAll('.fade').forEach(e=>obs.observe(e));
 const music=document.getElementById('music');
 const musicBtn=document.getElementById('musicBtn');
 const musicText=document.getElementById('musicText');
+
 function toggleMusic(){
   if(music.paused){
-    music.play().then(()=>{musicBtn.textContent='❚❚';musicText.textContent='Ijro etilmoqda'}).catch(()=>{});
+    playMusic();
   }else{
     music.pause(); musicBtn.textContent='♫'; musicText.textContent='Musiqa';
   }
 }
+
+window.addEventListener('load', ()=>{
+  setTimeout(() => {
+    playMusic();
+  }, 500);
+});
 </script>
 </body>
 </html>
