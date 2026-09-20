@@ -1,0 +1,9 @@
+QO'SHIQ QO'SHISH
+
+Taklifnomaga o'zingiz xohlagan MP3 qo'shiqni qo'shish uchun:
+1. Qo'shiq faylini aynan "music.mp3" deb nomlang.
+2. Uni index.html bilan bir xil papkaga joylashtiring.
+3. GitHub Pages'ga ikkalasini birga yuklang.
+
+Taklifnoma ochilgandan keyin past o'ngdagi ♫ tugmasi orqali musiqa yoqiladi.
+Brauzerlar avtomatik ovoz chiqarishni ko'pincha bloklaydi, shuning uchun foydalanuvchi tugmani bosib yoqadi.
